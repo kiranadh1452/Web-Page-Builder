@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Web Page Builder</title> 
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  
+  <!-- header part  -->
+  <header id="header-wrapper" class="clearfix">
+
+    <div id="logo-wrapper" class="float-left">
+      <div id="logo-container">
+        <!-- logo here -->
+      </div>
+    </div>
+
+    <div id="nav-wrapper" class="clearfix">
+      <nav class="nav-bar-top float-left">
+        <ul class="nav-items-list">
+          <li class="nav-item" id="view-page"> <a href="css/outputPage.css" download="outputPage.txt">View Page</a></li>
+          <li class="nav-item" id="test-btn"> <a href="#">Hire Professional</a></li>
+        </ul>
+      </nav>    
+  
+      <nav class="float-right nav-bar-top">
+        <ul class="nav-items-list">
+          <li class="nav-item" id="code-export"> <a href="#">Get Code</a></li>
+          <li class="nav-item"> <a href="#">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+
+  <!-- main container -->
+  <div id="main-wrapper" class="clearfix">
+
+
+    <!-- left bar to select among the html components -->
+    <div id="left-sidebar" class="float-left">
+      <ul id="element-list">
+        <!-- selective elements will be displayed here -->
+      </ul>
+    </div>
+
+
+    <!-- this is where the users will create their webpage design -->
+    <div id="output-wrapper" class="float-left text-center">
+
+      <div id="edit-view">
+
+      </div>
+      
+      <div id="output-container" class="text-left clearfix">
+        <!-- the output -->
+      </div>
+      
+      <button id="clear-page">Clear Page</button>
+
+    </div>
+  </div>
+
+  <!-- footer part -->
+  <footer class="border">
+    <div class="foot-wrapper border clearfix">
+      <nav class="foot-nav-item float-left">
+          <a href="#" title="About Us">About Us</a>
+          <a href="#" title="Contact Us">Contact Us</a>
+          <a href="#" title="Terms of Use">Terms of Use</a>
+          <a href="#" title="Privacy Policy">Privacy Policy</a>
+          <a href="#" title="Feedback">Feedback</a>
+      </nav>
+      <div class="float-right">
+        &copy; Web Page Builder
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="src/index.js"></script>
+</body>
+
+</html>

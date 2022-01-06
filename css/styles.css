@@ -1,0 +1,41 @@
+#element-list{
+  padding: 1vh 1vw;
+  line-height: 5vh;
+}
+.element-list-item {
+  font-size: 2vh;
+  color: white;
+  border: solid 1px white;
+  padding: 0 1vw
+}
+.element-list-item:hover{
+  cursor: pointer;
+}
+.resizable{
+  position: absolute;
+  max-width: 99%;
+  /* min-width: 10%; */
+  /* min-height: 10%; */
+  resize:both;
+  overflow: auto;
+}
+.selected-element{
+  border: 2px dashed rgb(17, 235, 64);
+}
+#edit-view{
+  position: relative;
+  color: white;
+  text-align: left;
+  line-height: 20px;
+}
+
+.edit-form{
+  border: 1px solid black;
+  background-color:rgb(97, 90, 87);
+}
+.edit-form>*{
+  margin:4% 3%;
+}
+button{
+  width:80%;
+}
