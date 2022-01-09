@@ -31,20 +31,23 @@ function editElement(event) {
   fontField.appendChild(fontFieldValue);
   
   
-//item width and height
-
   //background Image
   const bgImageField = document.createElement('div');
   const bgImageFieldTitle = document.createElement('p');
   const bgImageFieldValue = document.createElement('input');
-
+  
   bgImageFieldTitle.innerHTML = `URL of background image (leave empty for no bg image)`;
   bgImageFieldValue.value = currElement.style.backgroundImage;
-
+  if(bgImageFieldValue.value.indexOf("url(")>-1){
+    bgImageFieldValue.value =bgImageFieldValue.value.slice(5,-2); //slice the `url(` part
+  }
+  
   bgImageField.appendChild(bgImageFieldTitle);
   bgImageField.appendChild(bgImageFieldValue);
+  
+//item width and height
 
-  //width
+//width
   const widthField = document.createElement('div');
   const widthFieldTitle = document.createElement('p');
   const widthFieldValue = document.createElement('input');
@@ -60,8 +63,8 @@ function editElement(event) {
   const heightFieldTitle = document.createElement('p');
   const heightFieldValue = document.createElement('input');
 
-  heightFieldTitle.innerHTML = `Height of this element `;
   heightFieldValue.value = currElement.style.height ;
+  heightFieldTitle.innerHTML = `Height of this element `;
 
   heightField.appendChild(heightFieldTitle);
   heightField.appendChild(heightFieldValue);
@@ -91,8 +94,8 @@ function editElement(event) {
   textColorField.appendChild(textColorFieldValue);
 
   //content of the element
-  const textElement = document.createElement('textarea');
   const formSubmit = document.createElement('button');
+  const textElement = document.createElement('textarea');
 
   textElement.value = currElement.innerHTML;
 
@@ -124,7 +127,10 @@ function editElement(event) {
     currElement.style.height = `${parseInt(heightFieldValue.value)}px`;
 
     //changing background image
-    if(bgImageFieldValue.value != undefined && bgImageFieldValue.value != ''){
+    if(bgImageFieldValue.value != undefined && bgImageFieldValue.value != '' && bgImageFieldValue.value !='none'){
+      if(bgImageFieldValue.value.indexOf("url('")<0){
+        bgImageFieldValue.value = "url('" +bgImageFieldValue.value+  "')";
+      }
       currElement.style.background = bgImageFieldValue.value;
       currElement.style.backgroundSize = "100% 100%";
     }

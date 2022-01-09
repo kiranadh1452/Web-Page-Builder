@@ -2,9 +2,9 @@ import {addElementToPage, testForThemes} from './eventHandlers.js';
 export { displayElement, totalElements };
 
 let totalElements = [];
-const elemList = ['div','p','span','button','img','ul','li', 'table','input', 'audio'];
+const elemList = ['div','p','span','button','img','ul','li', 'table','input'];
 
-//displaying these elements in the left side-bar
+//displaying the elements in the left side-bar
 function displayElement(){
   const list = document.querySelector('#element-list');
   for(let item of elemList){

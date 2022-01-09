@@ -25,6 +25,8 @@ let str2 = `
 </body>
 </html>`;
 
+
+//export the html code in file format
 function downloadCode(){
   let strMid = document.querySelector('#output-container').innerHTML;
   let myPage = str1 + strMid + str2;
