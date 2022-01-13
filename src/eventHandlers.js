@@ -18,6 +18,7 @@ function addElementToPage(event){
 
   if(targetValue == 'Image Carousel'){
     newElem = addCarouselToPage();
+    handleElement(newElem, '' , event);
     return;
   }
 
@@ -33,6 +34,12 @@ function addElementToPage(event){
 
 }
 
+/*
+  Function to add other event listners to a new created element
+  @param {newElem} Node - created element
+  @param {targetValue} String - type of element created
+  @param {event} Event - passes on the clicked event
+*/
 function handleElement(newElem, targetValue, event){
   newElem.draggable = true;
   newElem.classList.add('border');
@@ -58,6 +65,7 @@ function handleElement(newElem, targetValue, event){
 
 //adding image carousel element
 //not completed yet
+//returns the wrapper containing carousel
 function addCarouselToPage(){
   const carouselWrapper = document.createElement('div');
   carouselWrapper.setAttribute('id', 'wrapper');
@@ -73,20 +81,7 @@ function addCarouselToPage(){
   }
   carouselWrapper.appendChild(carouselImages);
 
-  carouselWrapper.draggable = true;
   page.appendChild(carouselWrapper);
-  updateSelectedElement(carouselWrapper);
-  
-  carouselWrapper.addEventListener('click', selectedElementHandler);
-
-  carouselWrapper.addEventListener('contextmenu', editElement);
-
-  page.addEventListener("dragstart", onDragStart, false);
-  
-  page.addEventListener('dragover', onDragOver, false);
-  page.addEventListener('drop', onDrop, false);
-
-
 
   let properties1 = {               // object to initialize the class
     imgWrapperId : "wrapper",     // id of the wrapper
@@ -96,8 +91,9 @@ function addCarouselToPage(){
     delay: 5                       // amount of delay
   };
 
-  let c1 = new Carousel(properties1);
-  return c1;
+  new Carousel(properties1);
+  return carouselWrapper;
+  
 }
 
 //on dragstart
