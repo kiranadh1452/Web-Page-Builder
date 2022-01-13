@@ -20,7 +20,7 @@ let str1 = `
         display: none;
       }
     </style>
-    <link rel="stylesheet" href="https://kiranadh1452.github.io/repo_assignment/JS/Assignment2/index.css" />
+    <link rel="stylesheet" href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/index.css" />
 </head>
 <body>
 ` ;

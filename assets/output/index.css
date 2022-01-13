@@ -46,3 +46,11 @@ img {
   left: 260px;
   top: -370px;
 }
+
+span{
+  font-size: 40px;
+}
+
+table, td{
+  border: solid 2px black;
+}

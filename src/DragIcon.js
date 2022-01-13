@@ -11,7 +11,7 @@ class DragIcon{
     this.dot.style.background = "red";
     this.dot.style.borderRadius = "50%";
 
-    this.dot.style.left = `${this.leftValue}px`;
+    this.dot.style.left = `${item.leftValue}px`;
     this.dot.style.top = `${item.clientBottom+10}px`;
     
     item.appendChild(this.dot);

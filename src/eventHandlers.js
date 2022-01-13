@@ -1,7 +1,8 @@
 // import { DragIcon } from './DragIcon.js';
+import { Table } from './Table.js';
 import { Carousel } from './Carousel.js';
 import { editElement } from './editElement.js';
-import { totalElements } from './elementList.js';
+import { totalElements, elemList } from './elementList.js';
 import { removeArrayElement, updateSelectedElement} from './utils.js' ;
 
 let draggedItem;
@@ -11,37 +12,52 @@ const page = document.querySelector('#output-container');
 
 // adding elements on left side bars to the page view
 function addElementToPage(event){
+  const targetValue = elemList[event.target.innerHTML];
+
   let newElem;
 
-  if(event.target.innerHTML == 'Image Carousel'){
+  if(targetValue == 'Image Carousel'){
     newElem = addCarouselToPage();
     return;
   }
+
+  else if(targetValue == 'table'){
+    let table = new Table();
+    handleElement(table, '', event);
+  }
+  
   else{
-    newElem = document.createElement(`${event.target.innerHTML}`);
-  
-    newElem.draggable = true;
-    newElem.classList.add('border');
-    newElem.classList.add('resizable');
-    newElem.innerHTML = `Created Element : ${event.target.innerHTML}\n`;
-  
-    page.appendChild(newElem);
-    totalElements.push(newElem);
-    updateSelectedElement(newElem);
-  
-    newElem.addEventListener('click', selectedElementHandler);
-  
-    newElem.addEventListener('contextmenu', editElement);
-  
-    page.addEventListener("dragstart", onDragStart, false);
-    
-    page.addEventListener('dragover', onDragOver, false);
-    page.addEventListener('drop', onDrop, false);
+    newElem = document.createElement(`${targetValue}`);
+    handleElement(newElem, targetValue, event);
   }
 
 }
 
+function handleElement(newElem, targetValue, event){
+  newElem.draggable = true;
+  newElem.classList.add('border');
+  newElem.classList.add('resizable');
+
+  if(targetValue != ''){
+    newElem.innerHTML = `---${event.target.innerHTML}\n ---`;
+  }
+
+  page.appendChild(newElem);
+  totalElements.push(newElem);
+  updateSelectedElement(newElem);
+
+  newElem.addEventListener('click', selectedElementHandler);
+
+  newElem.addEventListener('contextmenu', editElement);
+
+  page.addEventListener("dragstart", onDragStart, false);
+  
+  page.addEventListener('dragover', onDragOver, false);
+  page.addEventListener('drop', onDrop, false);
+}
+
 //adding image carousel element
+//not completed yet
 function addCarouselToPage(){
   const carouselWrapper = document.createElement('div');
   carouselWrapper.setAttribute('id', 'wrapper');

@@ -1,13 +1,26 @@
 import {addElementToPage} from './eventHandlers.js';
 
 let totalElements = [];
-const elemList = ['div','p','span','button','img','ul','li', 'table','input', 'Image Carousel'];
+
+const elemList = {
+  'Block Element' : 'div',
+  'Sub-title' : 'p',
+  'Title' : 'span',
+  'Button' : 'button',
+  'Image' : 'img',
+  'List Title' : 'ul',
+  'List item' : 'li', 
+  'Table' : 'table',
+  'Form Input':'input', 
+  'Image Carousel':'Image Carousel'
+};
 const advanceElemList = ['Image Carousel'];
 
 //displaying the elements in the left side-bar
 function displayElement(){
   const list = document.querySelector('#element-list');
-  for(let item of elemList){
+  
+  for(let item in elemList){
     let myEl = document.createElement('li');
 
     myEl.innerHTML = item;
@@ -20,4 +33,4 @@ function displayElement(){
   
 }
 
-export { displayElement, totalElements };
+export { displayElement, totalElements, elemList };
