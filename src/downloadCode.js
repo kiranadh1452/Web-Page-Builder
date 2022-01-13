@@ -16,6 +16,9 @@ let str1 = `
       .border{
         border: none;
       }
+      .dragIcon{
+        display: none;
+      }
     </style>
     <link rel="stylesheet" href="https://kiranadh1452.github.io/repo_assignment/JS/Assignment2/index.css" />
 </head>
@@ -23,6 +26,7 @@ let str1 = `
 ` ;
 
 let str2 = `
+<script src="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/Carousel.js"></script>
 </body>
 </html>`;
 

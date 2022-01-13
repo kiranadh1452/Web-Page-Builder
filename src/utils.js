@@ -13,11 +13,11 @@ function updateSelectedElement(nextSelected){
   if(selectedList != null){
     selectedList.forEach(prevElement => {    
       prevElement.classList.remove('selected-element');
-      // delete prevElement.dragBtn;
+      prevElement.dragBtn.delete();
     });
   }
   nextSelected.classList.add('selected-element');
-  // nextSelected.dragBtn = new DragIcon(nextSelected);
+  nextSelected.dragBtn = new DragIcon(nextSelected);
 }
 
 
