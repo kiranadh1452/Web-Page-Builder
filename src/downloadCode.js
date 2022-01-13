@@ -18,7 +18,7 @@ let str1 = `
       }
     </style>
     <link rel="stylesheet" href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/reset.css">
-    <link rel="stylesheet" href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/index.css" />
+    <link rel="stylesheet" href="/assets/output/index.css" />
 </head>
 <body>
 ` ;

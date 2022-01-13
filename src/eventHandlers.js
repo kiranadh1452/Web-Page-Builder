@@ -1,7 +1,7 @@
 // import { DragIcon } from './DragIcon.js';
 import { Table } from './Table.js';
 import { Carousel } from './Carousel.js';
-import { editElement, formatTable } from './editElement.js';
+import { editElement} from './editElement.js';
 import { totalElements, elemList } from './elementList.js';
 import { removeArrayElement, updateSelectedElement} from './utils.js' ;
 
@@ -28,7 +28,6 @@ function addElementToPage(event){
     let myTable = table.table;
     handleElement(myTable, '', event);
     tableArray.push(table);
-    formatTable(table);
   }
   
   else{

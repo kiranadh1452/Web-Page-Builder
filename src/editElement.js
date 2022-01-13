@@ -105,6 +105,7 @@ function editElement(event) {
   textElement.value = currElement.innerHTML;
 
   //add row and column for table view
+  //experimental, not implemented yet
   if(currElement.type = 'table'){
     console.log(currElement)
 
@@ -185,9 +186,5 @@ function editElement(event) {
   beingEdited = true;
 }
 
-function formatTable(table){
-  table.addRow();
-  table.addColumn();
-}
 
-export { editElement, formatTable } ;
+export { editElement } ;

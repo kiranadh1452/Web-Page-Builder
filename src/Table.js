@@ -1,8 +1,8 @@
 class Table {
 
   constructor(){
-    this.row = 2;
-    this.column = 2;
+    this.row = prompt("No. of Rows", 2);
+    this.column = prompt("No. of Column", 2);
     this.table = this.createTable();
     return this;
   }
