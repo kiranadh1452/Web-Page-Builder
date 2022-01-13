@@ -1,32 +1,31 @@
 import { updateSelectedElement } from './utils.js';
 
-export { editElement } ;
-
-const pageWrap = document.querySelector('#edit-view');
 let beingEdited = false;
+const pageWrap = document.querySelector('#edit-view');
 
 //on double clicking the element 
 function editElement(event) {
   if (beingEdited) {
     return;
   }
-  const currElement = event.target;
   event.preventDefault();
+  const currElement = event.target;
   updateSelectedElement(currElement);
 
   const formElement = document.createElement('form');
+
   formElement.classList.add('edit-form');
 
-//contents inside the form
-
+  //contents inside the form
+  
   //font-size 
   const fontField = document.createElement('div');
   const fontFieldTitle = document.createElement('p');
   const fontFieldValue = document.createElement('input');
-
+  
   fontFieldTitle.innerHTML = `Font Size `;
   fontFieldValue.value = currElement.style.fontSize ;
-
+  
   fontField.appendChild(fontFieldTitle);
   fontField.appendChild(fontFieldValue);
   
@@ -45,16 +44,16 @@ function editElement(event) {
   bgImageField.appendChild(bgImageFieldTitle);
   bgImageField.appendChild(bgImageFieldValue);
   
-//item width and height
-
-//width
+  //item width and height
+  
+  //width
   const widthField = document.createElement('div');
   const widthFieldTitle = document.createElement('p');
   const widthFieldValue = document.createElement('input');
-
-  widthFieldTitle.innerHTML = `Width of this element `;
+  
   widthFieldValue.value = currElement.style.width ;
-
+  widthFieldTitle.innerHTML = `Width of this element `;
+  
   widthField.appendChild(widthFieldTitle);
   widthField.appendChild(widthFieldValue);
   
@@ -62,70 +61,74 @@ function editElement(event) {
   const heightField = document.createElement('div');
   const heightFieldTitle = document.createElement('p');
   const heightFieldValue = document.createElement('input');
-
+  
   heightFieldValue.value = currElement.style.height ;
   heightFieldTitle.innerHTML = `Height of this element `;
-
+  
   heightField.appendChild(heightFieldTitle);
   heightField.appendChild(heightFieldValue);
-
+  
   //bg-color editor
   const colorField = document.createElement('div');
   const colorFieldTitle = document.createElement('p');
   const colorFieldValue = document.createElement('input');
-  colorFieldValue.setAttribute('type', 'color');
 
+  colorFieldValue.setAttribute('type', 'color');
+  
   colorFieldValue.value = '#ffffff';
   colorFieldTitle.innerHTML = `Background Color `;
-
+  
   colorField.appendChild(colorFieldTitle);
   colorField.appendChild(colorFieldValue);
-
+  
   //text-color editor
   const textColorField = document.createElement('div');
   const textColorFieldTitle = document.createElement('p');
   const textColorFieldValue = document.createElement('input');
+  
   textColorFieldValue.setAttribute('type', 'color');
-
+  
   textColorFieldTitle.innerHTML = `Text Color `;
   textColorFieldValue.value = currElement.clientColor;
-
+  
   textColorField.appendChild(textColorFieldTitle);
   textColorField.appendChild(textColorFieldValue);
-
+  
   //content of the element
   const formSubmit = document.createElement('button');
   const textElement = document.createElement('textarea');
-
+  
   textElement.value = currElement.innerHTML;
 
   formSubmit.innerText = " Update ";
-
+  
   //appending the sub-components inside the form
   formElement.appendChild(textElement);
   formElement.appendChild(colorField);
   formElement.appendChild(textColorField);
+  
   formElement.appendChild(fontField);
   formElement.appendChild(widthField);
   formElement.appendChild(heightField);
   formElement.appendChild(bgImageField);
+  
   formElement.appendChild(formSubmit);
-
+  
   //form submit button
   formSubmit.onclick = () => {
 
     //change the content of the editing element
     currElement.innerHTML = textElement.value;
-
+    
     //change color
     
     currElement.style.color = textColorFieldValue.value;
-
+    
     //change font-szie, height and width
-    currElement.style.fontSize = `${parseInt(fontFieldValue.value)}px`;
     currElement.style.width = `${parseInt(widthFieldValue.value)}px`;
+    currElement.style.fontSize = `${parseInt(fontFieldValue.value)}px`;
     currElement.style.height = `${parseInt(heightFieldValue.value)}px`;
-
+    
     //changing background image
     if(bgImageFieldValue.value != undefined && bgImageFieldValue.value != '' && bgImageFieldValue.value !='none'){
       if(bgImageFieldValue.value.indexOf("url('")<0){
@@ -143,18 +146,17 @@ function editElement(event) {
     formElement.remove();
     beingEdited = false;
   };
-
+  
   //form styling
-  formElement.style.position = 'absolute';
   formElement.style.zIndex = '3';
-
-  formElement.style.width = pageWrap.clientWidth/1.2 + 'px';
+  formElement.style.position = 'absolute';
+  
   formElement.style.top = 10 + "px";
   formElement.style.left = 20 + "px";
-
+  formElement.style.width = pageWrap.clientWidth/1.2 + 'px';
 
   pageWrap.appendChild(formElement);
   beingEdited = true;
-
 }
 
+export { editElement } ;

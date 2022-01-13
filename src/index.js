@@ -1,24 +1,17 @@
-import { displayElement } from './elementList.js';
-import { downloadCode } from './downloadCode.js';
 import { chooseTheme } from './themeHandler.js'
+import { downloadCode } from './downloadCode.js';
+import { displayElement, totalElements} from './elementList.js';
 
 
-const instructionsBtn = document.querySelector('#instruction-btn');
 const clearPage = document.querySelector('#clear-page');
 const exportCode = document.querySelector('#code-export');
 
 //On clicking the clear page button
 clearPage.onclick = () => {
   document.querySelector('#output-container').innerHTML = '';
-  totalElements = [];
-}
-
-//tes button - for display purpose
-instructionsBtn.onclick = () => {
-  const allValues = document.querySelectorAll('.resizable');
-  allValues.forEach( value => {
-    console.log(value);
-  });
+  for(let items of totalElements){
+    removeArrayElement(totalElements, items);
+  }
 }
 
 // export code button

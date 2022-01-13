@@ -1,8 +1,5 @@
 class DragIcon{
   constructor(item){
-    // this.rect = item.getBoundingClientRect();
-    // this.x = this.rect.left;
-    // this.posValue = this.rect.top + 10 ; //10 px for the dot.
     this.leftValue = (item.clientRight - item.clientLeft)/2;
 
     const dot = document.createElement('div');

@@ -1,4 +1,4 @@
-import { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, dragStartHandler} from './eventHandlers.js' ;
+import { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, onDrop} from './eventHandlers.js' ;
 
 export { chooseTheme };
 

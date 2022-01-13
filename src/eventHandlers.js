@@ -1,67 +1,122 @@
-import { removeArrayElement, updateSelectedElement} from './utils.js' ;
-import { totalElements } from './elementList.js';
+// import { DragIcon } from './DragIcon.js';
+import { Carousel } from './Carousel.js';
 import { editElement } from './editElement.js';
-import { DragIcon } from './DragIcon.js';
+import { totalElements } from './elementList.js';
+import { removeArrayElement, updateSelectedElement} from './utils.js' ;
 
-export { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, dragStartHandler};
-
-const page = document.querySelector('#output-container');
-let mousePosX, mousePosY;
 let draggedItem;
+let mousePosX, mousePosY;
+const page = document.querySelector('#output-container');
 
 
 // adding elements on left side bars to the page view
 function addElementToPage(event){
-  // trackMouse();
-  const newElem = document.createElement(`${event.target.innerHTML}`);
-  newElem.innerHTML = `Created Element : ${event.target.innerHTML}\n`;
-  newElem.classList.add('border');
-  newElem.classList.add('resizable');
-  newElem.draggable = true;
-  totalElements.push(newElem);
-  page.appendChild(newElem);
-  updateSelectedElement(newElem);
+  let newElem;
 
-  newElem.addEventListener('click', selectedElementHandler);
-  newElem.addEventListener('contextmenu', editElement);
+  if(event.target.innerHTML == 'Image Carousel'){
+    newElem = addCarouselToPage();
+    return;
+  }
+  else{
+    newElem = document.createElement(`${event.target.innerHTML}`);
+  
+    newElem.draggable = true;
+    newElem.classList.add('border');
+    newElem.classList.add('resizable');
+    newElem.innerHTML = `Created Element : ${event.target.innerHTML}\n`;
+  
+    page.appendChild(newElem);
+    totalElements.push(newElem);
+    updateSelectedElement(newElem);
+  
+    newElem.addEventListener('click', selectedElementHandler);
+  
+    newElem.addEventListener('contextmenu', editElement);
+  
+    page.addEventListener("dragstart", onDragStart, false);
+    
+    page.addEventListener('dragover', onDragOver, false);
+    page.addEventListener('drop', onDrop, false);
+  }
+
+}
+
+//adding image carousel element
+function addCarouselToPage(){
+  const carouselWrapper = document.createElement('div');
+  carouselWrapper.setAttribute('id', 'wrapper');
+
+  const carouselImages = document.createElement('div');
+  carouselImages.setAttribute('id', 'images')
+  
+  for(let i = 0; i<4 ; i++){
+    let image = document.createElement('img');
+    image.src = `https://kiranadh1452.github.io/repo_assignment/JS/Assignment2/assets/images/image${i+1}.jpg`;
+
+    carouselImages.appendChild(image);
+  }
+  carouselWrapper.appendChild(carouselImages);
+
+  carouselWrapper.draggable = true;
+  page.appendChild(carouselWrapper);
+  updateSelectedElement(carouselWrapper);
+  
+  carouselWrapper.addEventListener('click', selectedElementHandler);
+
+  carouselWrapper.addEventListener('contextmenu', editElement);
 
   page.addEventListener("dragstart", onDragStart, false);
-
+  
   page.addEventListener('dragover', onDragOver, false);
+  page.addEventListener('drop', onDrop, false);
 
-  page.addEventListener('drop', dragStartHandler, false);
 
+
+  let properties1 = {               // object to initialize the class
+    imgWrapperId : "wrapper",     // id of the wrapper
+    imgContainer : "images",      // id of the image container
+    imageWidth : 500,              // width of image
+    requiredTime : 5,              // animation time in seconds
+    delay: 5                       // amount of delay
+  };
+
+  let c1 = new Carousel(properties1);
+  return c1;
 }
 
 //on dragstart
 function onDragStart( event ){
   draggedItem = event.target;
-  draggedItem.leftShift = event.pageX - page.offsetLeft - draggedItem.offsetLeft;
   draggedItem.topShift = event.pageY - page.offsetTop - draggedItem.offsetTop;
+  draggedItem.leftShift = event.pageX - page.offsetLeft - draggedItem.offsetLeft;
 }
 
 //on drag over
-function onDragOver(event) {
+function onDragOver(event){
   event.preventDefault();
 }
 
 //on dragover
-function dragStartHandler(event){
+function onDrop(event){
   event.preventDefault();
   const currElement = event.target;
-  let posX = event.pageX - page.offsetLeft - draggedItem.leftShift;
   let posY = event.pageY - page.offsetTop - draggedItem.topShift;
+  let posX = event.pageX - page.offsetLeft - draggedItem.leftShift;
+  
   if(posX < 0){
     posX = 0;
   }
-  if(posY < 0) posY = 0;
-
+  
+  if(posY < 0){
+    posY = 0; 
+  }
+  
   draggedItem.style.top = `${posY}px`;
   draggedItem.style.left = `${posX}px`;
-
+  
   let sizeAdjust =  (posX + draggedItem.offsetWidth) - page.offsetWidth;
+  
   if(sizeAdjust > 0){
-    console.log(draggedItem.offsetWidth - sizeAdjust);
     draggedItem.style.width = draggedItem.offsetWidth - sizeAdjust +"px";
   }
 }
@@ -76,8 +131,10 @@ function selectedElementHandler(event){
 //on pressing the delete button from keyboard
 function selectedElementKeyHandler(event){
   const code = event.code;
+  
   if(code === "Delete"){
     const selectedList = document.querySelectorAll('.selected-element');
+    
     if(selectedList != null){
       selectedList.forEach(prevElement => {    
         removeArrayElement(totalElements,prevElement);
@@ -87,3 +144,4 @@ function selectedElementKeyHandler(event){
   }
 }
 
+export { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, onDrop};
