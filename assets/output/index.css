@@ -54,4 +54,5 @@ span{
 table, td{
   border: solid 1px black;
   margin: 0;
+  box-sizing: border-box;
 }

@@ -24,9 +24,9 @@ function addElementToPage(event){
 
   else if(targetValue == 'table'){
     let table = new Table();
-    // console.log(table)
     handleElement(table.table, '', event);
     table.addRow();
+    table.addColumn();
   }
   
   else{
@@ -101,6 +101,7 @@ function addCarouselToPage(){
 //on dragstart
 function onDragStart( event ){
   draggedItem = event.target;
+  updateSelectedElement(draggedItem);
   draggedItem.topShift = event.pageY - page.offsetTop - draggedItem.offsetTop;
   draggedItem.leftShift = event.pageX - page.offsetLeft - draggedItem.offsetLeft;
 }

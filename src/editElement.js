@@ -98,10 +98,9 @@ function editElement(event) {
   const formSubmit = document.createElement('button');
   const textElement = document.createElement('textarea');
   
+  formSubmit.innerText = " Update ";
   textElement.value = currElement.innerHTML;
 
-  formSubmit.innerText = " Update ";
-  
   //appending the sub-components inside the form
   formElement.appendChild(textElement);
   formElement.appendChild(colorField);
@@ -142,9 +141,8 @@ function editElement(event) {
       currElement.style.backgroundColor = colorFieldValue.value;
     }
     //deleting the form element after making changes.
-    pageWrap.removeChild(formElement);
-    formElement.remove();
     beingEdited = false;
+    formElement.remove();
   };
   
   //form styling

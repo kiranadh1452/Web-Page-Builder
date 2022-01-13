@@ -9,6 +9,7 @@ const exportCode = document.querySelector('#code-export');
 //On clicking the clear page button
 clearPage.onclick = () => {
   document.querySelector('#output-container').innerHTML = '';
+  
   for(let items of totalElements){
     removeArrayElement(totalElements, items);
   }

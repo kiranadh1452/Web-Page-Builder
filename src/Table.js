@@ -27,6 +27,7 @@ class Table {
   //add number of columns
   addColumn(){
     this.column += 1;
+    let rowArray = this.getAllRows();
   }
 
   //Create the table
@@ -54,7 +55,6 @@ class Table {
     const rowArray = [];
 
     for(let rowEach of this.table.children){
-      console.log(rowEach);
       rowArray.push(rowEach);
     }
 

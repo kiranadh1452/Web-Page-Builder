@@ -20,6 +20,7 @@ let str1 = `
         display: none;
       }
     </style>
+    <link href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/reset.css" rel="stylesheet">
     <link rel="stylesheet" href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/index.css" />
 </head>
 <body>
@@ -41,14 +42,17 @@ function downloadCode(){
 
   let newLink = document.createElement("a");
   newLink.download = sFileName;
+
   if (window.webkitURL != null) {
     newLink.href = window.webkitURL.createObjectURL(textToBLOB);
   }
+
   else {
     newLink.href = window.URL.createObjectURL(textToBLOB);
     newLink.style.display = "none";
     document.body.appendChild(newLink);
   }
+  
   newLink.click();
 
 }

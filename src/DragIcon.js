@@ -1,4 +1,5 @@
 class DragIcon{
+  
   constructor(item){
     this.leftValue = ((item.clientRight - item.clientLeft)/2) - 10;
 

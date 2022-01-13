@@ -27,28 +27,38 @@ class Carousel{
     }
 
     this.arrowBtn1 = document.createElement('button');
+
     this.arrowBtn1.innerHTML = "&#9001;";
     this.arrowBtn1.classList.add('control-button', 'left-btn');
+
     this.wrapper.appendChild(this.arrowBtn1);
+
     this.arrowBtn1.onclick = function (){
                               this.dx = this.imageWidth;
                               this.currentIndex--;
+
                               if (this.currentIndex<0) this.currentIndex = this.imageCount-1;
+
                               this.leftClick();
                               this.resetTimer();
 
                             }.bind(this)
     
     this.arrowBtn2 = document.createElement('button');
+
     this.arrowBtn2.innerHTML = "&#9002;";
     this.arrowBtn2.classList.add('control-button', 'btn-right');
+
     this.wrapper.appendChild(this.arrowBtn2);
+
     this.arrowBtn2.onclick = function (){
                               this.dx = 0;
                               this.currentIndex = (this.currentIndex+1)%this.imageCount;
+
                               if(this.currentIndex == this.imageCount){
                                 this.currentIndex = 0;
                               }
+
                               this.rightClick();
                               this.resetTimer()
                             }.bind(this)
@@ -57,6 +67,7 @@ class Carousel{
     
 
   }
+
   render(){
     this.arrowBtn2.click();  
   }
@@ -66,6 +77,7 @@ class Carousel{
     this.timer = setInterval(this.render.bind(this), this.delay);
   }
 
+  //left slide button clickEvent
   leftClick(){
     this.startAnimation1 = window.requestAnimationFrame(this.leftClick.bind(this));
 
@@ -82,7 +94,7 @@ class Carousel{
 
   }
 
-
+  //right slide button clickEvent
   rightClick(){
     this.startAnimation2 = window.requestAnimationFrame(this.rightClick.bind(this));
 

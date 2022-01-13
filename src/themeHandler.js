@@ -26,7 +26,6 @@ function loadTheme(themeVal){
 
 function addItemToContainer(item){
   if(item.children.length == 0){
-    console.log(item);
     item.contentEditable = true;
     item.classList.add('border');
     item.classList.add('resizable');
