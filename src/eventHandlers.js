@@ -1,11 +1,12 @@
 // import { DragIcon } from './DragIcon.js';
 import { Table } from './Table.js';
 import { Carousel } from './Carousel.js';
-import { editElement } from './editElement.js';
+import { editElement, formatTable } from './editElement.js';
 import { totalElements, elemList } from './elementList.js';
 import { removeArrayElement, updateSelectedElement} from './utils.js' ;
 
 let draggedItem;
+let tableArray = [];
 let mousePosX, mousePosY;
 const page = document.querySelector('#output-container');
 
@@ -24,13 +25,16 @@ function addElementToPage(event){
 
   else if(targetValue == 'table'){
     let table = new Table();
-    handleElement(table.table, '', event);
-    table.addRow();
-    table.addColumn();
+    let myTable = table.table;
+    handleElement(myTable, '', event);
+    tableArray.push(table);
+    formatTable(table);
   }
   
   else{
+    console.log(targetValue)
     newElem = document.createElement(`${targetValue}`);
+    console.log(newElem);
     handleElement(newElem, targetValue, event);
   }
 
@@ -48,7 +52,7 @@ function handleElement(newElem, targetValue, event){
   newElem.classList.add('resizable');
 
   if(targetValue != ''){
-    newElem.innerHTML = `---${event.target.innerHTML}\n ---`;
+    newElem.innerHTML = `${event.target.innerHTML}\n ---`;
   }
 
   page.appendChild(newElem);
@@ -81,6 +85,7 @@ function addCarouselToPage(){
 
     carouselImages.appendChild(image);
   }
+
   carouselWrapper.appendChild(carouselImages);
 
   page.appendChild(carouselWrapper);
@@ -159,4 +164,4 @@ function selectedElementKeyHandler(event){
   }
 }
 
-export { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, onDrop};
+export { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, onDrop, tableArray};

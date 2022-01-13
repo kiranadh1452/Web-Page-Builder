@@ -1,4 +1,5 @@
 import { chooseTheme } from './themeHandler.js'
+import { removeArrayElement } from './utils.js';
 import { downloadCode } from './downloadCode.js';
 import { displayElement, totalElements} from './elementList.js';
 

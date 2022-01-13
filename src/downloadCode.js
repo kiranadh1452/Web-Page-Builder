@@ -17,7 +17,7 @@ let str1 = `
         display: none;
       }
     </style>
-    <link href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/reset.css">
     <link rel="stylesheet" href="https://kiranadh1452.github.io/Web-Page-Builder/assets/output/index.css" />
 </head>
 <body>

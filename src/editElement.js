@@ -1,13 +1,16 @@
 import { updateSelectedElement } from './utils.js';
+import { tableArray } from './eventHandlers.js';
 
 let beingEdited = false;
 const pageWrap = document.querySelector('#edit-view');
 
 //on double clicking the element 
 function editElement(event) {
+
   if (beingEdited) {
     return;
   }
+
   event.preventDefault();
   const currElement = event.target;
   updateSelectedElement(currElement);
@@ -101,6 +104,30 @@ function editElement(event) {
   formSubmit.innerText = " Update ";
   textElement.value = currElement.innerHTML;
 
+  //add row and column for table view
+  if(currElement.type = 'table'){
+    console.log(currElement)
+
+    for(let tableEach of tableArray){
+      console.log(tableEach);
+
+      if(tableEach == currElement){
+        console.log('Found')
+        const addRowBtn = document.createElement('button');
+        addRowBtn.innerText = `Add Row`;
+        // addRowBtn.onclick = currElement.object.addRow();
+
+        const addColBtn = document.createElement('button');
+        addColBtn.innerText = `Add Column`;    
+
+        formElement.appendChild(addRowBtn);
+        formElement.appendChild(addColBtn);
+      }
+
+    }
+
+  }
+  
   //appending the sub-components inside the form
   formElement.appendChild(textElement);
   formElement.appendChild(colorField);
@@ -112,7 +139,7 @@ function editElement(event) {
   formElement.appendChild(bgImageField);
   
   formElement.appendChild(formSubmit);
-  
+
   //form submit button
   formSubmit.onclick = () => {
 
@@ -140,6 +167,7 @@ function editElement(event) {
       currElement.style.background = "none";
       currElement.style.backgroundColor = colorFieldValue.value;
     }
+
     //deleting the form element after making changes.
     beingEdited = false;
     formElement.remove();
@@ -157,4 +185,9 @@ function editElement(event) {
   beingEdited = true;
 }
 
-export { editElement } ;
+function formatTable(table){
+  table.addRow();
+  table.addColumn();
+}
+
+export { editElement, formatTable } ;
