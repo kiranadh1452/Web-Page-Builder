@@ -24,7 +24,9 @@ function addElementToPage(event){
 
   else if(targetValue == 'table'){
     let table = new Table();
-    handleElement(table, '', event);
+    // console.log(table)
+    handleElement(table.table, '', event);
+    table.addRow();
   }
   
   else{

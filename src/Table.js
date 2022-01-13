@@ -4,13 +4,27 @@ class Table {
     this.row = 2;
     this.column = 2;
     this.table = this.createTable();
-    return this.table;
+    return this;
   }
 
+  //add number of rows
   addRow(){
     this.row += 1;
+    const newRow = document.createElement('tr');
+
+    for(let col=0; col<this.column; col++){
+      const cell = document.createElement("td");
+      const cellText = document.createTextNode("cell in row "+this.row+", column "+col);
+
+      cell.appendChild(cellText);
+      
+      newRow.appendChild(cell);
+    }
+    this.table.appendChild(newRow);
+
   }
 
+  //add number of columns
   addColumn(){
     this.column += 1;
   }

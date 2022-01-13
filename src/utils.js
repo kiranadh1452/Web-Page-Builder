@@ -1,13 +1,20 @@
 import { DragIcon } from './DragIcon.js';
 
-//function to remove a element from array with value value
+/*
+  Remove an element from array with a value
+  @param {Array} myArray
+  @param {Node} value
+*/
 function removeArrayElement( myArray, value){
   myArray =  myArray.filter(function(item){ 
     return item != value; 
   });
 }
 
-//function to show which is the current selected element
+/* 
+  Shows which is the current selected element
+  @param {Node} nextSelected
+*/
 function updateSelectedElement(nextSelected){
   const selectedList = document.querySelectorAll('.selected-element');
   if(selectedList != null){

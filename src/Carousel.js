@@ -1,5 +1,6 @@
 export {Carousel};
 
+//Carousel class
 class Carousel{
 
   constructor(properties){
