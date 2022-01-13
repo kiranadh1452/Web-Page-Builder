@@ -14,7 +14,7 @@ class Table {
 
     for(let col=0; col<this.column; col++){
       const cell = document.createElement("td");
-      const cellText = document.createTextNode("cell in row "+this.row+", column "+col);
+      const cellText = document.createTextNode('New Row');
 
       cell.appendChild(cellText);
       
@@ -28,6 +28,16 @@ class Table {
   addColumn(){
     this.column += 1;
     let rowArray = this.getAllRows();
+
+    for(let rowEach in rowArray){
+      const cell = document.createElement("td");
+      const cellText = document.createTextNode('New Column');
+
+      cell.appendChild(cellText);
+
+      rowArray[rowEach].appendChild(cell);
+    }
+
   }
 
   //Create the table

@@ -8,10 +8,7 @@ let str1 = `
     <title>New Page View</title> 
     <style>
       .resizable{
-        width: 100%;
-        position: absolute;
-        /* resize: both;
-        overflow: auto; */
+        position: relative;
       }
       .border{
         border: none;
