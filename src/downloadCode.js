@@ -17,6 +17,7 @@ let str1 = `
         border: none;
       }
     </style>
+    <link rel="stylesheet" href="https://kiranadh1452.github.io/repo_assignment/JS/Assignment2/index.css" />
 </head>
 <body>
 ` ;

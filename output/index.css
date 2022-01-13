@@ -19,16 +19,16 @@
 img {
   position: absolute;
   z-index: 1;
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
   border: 1px solid #ccc;
   top: 0px;
 }
 
 .control-button{
-  position: absolute;
+  position: relative;
   top: 230px;
-  left: 0px;
+  left: ;
   z-index: 3;
   outline: none;
   border: none;
@@ -42,13 +42,13 @@ img {
 }
 .btn-right{
   position: absolute;
-  left: 483px;
+  left: 50%;
 }
 
 .dots-container{
-  position: absolute;
+  position: relative;
   z-index: 4;
-  top: 470px;
+  top: 10%;
   left: 190px;
   margin: 0;
 }

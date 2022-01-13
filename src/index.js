@@ -1,8 +1,9 @@
 import { displayElement } from './elementList.js';
 import { downloadCode } from './downloadCode.js';
+import { chooseTheme } from './themeHandler.js'
 
 
-const testBtn = document.querySelector('#test-btn');
+const instructionsBtn = document.querySelector('#instruction-btn');
 const clearPage = document.querySelector('#clear-page');
 const exportCode = document.querySelector('#code-export');
 
@@ -13,7 +14,7 @@ clearPage.onclick = () => {
 }
 
 //tes button - for display purpose
-testBtn.onclick = () => {
+instructionsBtn.onclick = () => {
   const allValues = document.querySelectorAll('.resizable');
   allValues.forEach( value => {
     console.log(value);
@@ -27,3 +28,11 @@ exportCode.onclick = () => {
 
 //show elements in the left side bar
 displayElement();
+
+//theme selection
+const themeList = {
+  'theme1' : '../assets/themes/theme1.html',
+  'theme2' : ''
+}
+
+// chooseTheme(themeList.theme1);

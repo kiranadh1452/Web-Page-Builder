@@ -10,6 +10,7 @@
 }
 .element-list-item:hover{
   cursor: pointer;
+  color: black;
 }
 .resizable{
   position: absolute;
