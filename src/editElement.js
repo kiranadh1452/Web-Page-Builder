@@ -1,5 +1,5 @@
-import { updateSelectedElement } from './utils.js';
 import { tableArray } from './eventHandlers.js';
+import { updateSelectedElement } from './utils.js';
 
 let beingEdited = false;
 const pageWrap = document.querySelector('#edit-view');
@@ -38,8 +38,9 @@ function editElement(event) {
   const bgImageFieldTitle = document.createElement('p');
   const bgImageFieldValue = document.createElement('input');
   
-  bgImageFieldTitle.innerHTML = `URL of background image (leave empty for no bg image)`;
   bgImageFieldValue.value = currElement.style.backgroundImage;
+  bgImageFieldTitle.innerHTML = `URL of background image (leave empty for no bg image)`;
+
   if(bgImageFieldValue.value.indexOf("url(")>-1){
     bgImageFieldValue.value =bgImageFieldValue.value.slice(5,-2); //slice the `url(` part
   }
@@ -107,16 +108,13 @@ function editElement(event) {
   //add row and column for table view
   //experimental, not implemented yet
   if(currElement.type = 'table'){
-    console.log(currElement)
 
     for(let tableEach of tableArray){
-      console.log(tableEach);
-
+      
       if(tableEach == currElement){
-        console.log('Found')
         const addRowBtn = document.createElement('button');
         addRowBtn.innerText = `Add Row`;
-        // addRowBtn.onclick = currElement.object.addRow();
+        // addRowBtn.onclick = currElement.obj.addRow();
 
         const addColBtn = document.createElement('button');
         addColBtn.innerText = `Add Column`;    
@@ -158,12 +156,15 @@ function editElement(event) {
     
     //changing background image
     if(bgImageFieldValue.value != undefined && bgImageFieldValue.value != '' && bgImageFieldValue.value !='none'){
+
       if(bgImageFieldValue.value.indexOf("url('")<0){
         bgImageFieldValue.value = "url('" +bgImageFieldValue.value+  "')";
       }
+
       currElement.style.background = bgImageFieldValue.value;
       currElement.style.backgroundSize = "100% 100%";
     }
+
     else{
       currElement.style.background = "none";
       currElement.style.backgroundColor = colorFieldValue.value;
@@ -182,9 +183,8 @@ function editElement(event) {
   formElement.style.left = 20 + "px";
   formElement.style.width = pageWrap.clientWidth/1.2 + 'px';
 
-  pageWrap.appendChild(formElement);
   beingEdited = true;
+  pageWrap.appendChild(formElement);
 }
-
 
 export { editElement } ;

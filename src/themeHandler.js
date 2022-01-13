@@ -1,7 +1,6 @@
-import { addElementToPage, selectedElementHandler, editElement, onDragStart, onDragOver, onDrop} from './eventHandlers.js' ;
+import { selectedElementHandler, editElement} from './eventHandlers.js' ;
 
-export { chooseTheme };
-
+//chooses a particular one among available themes
 function chooseTheme(themeId){
   return fetch(themeId)
   .then( function(response){
@@ -13,30 +12,30 @@ function chooseTheme(themeId){
 }
 
 const containerOp = document.getElementById('output-container');
-function loadTheme(themeVal){
-  const themeContainer = document.createElement('div');
-  themeContainer.innerHTML = themeVal;
-  // containerOp.innerHTML = themeVal;
 
-  for(let item of themeContainer.children) {
-    addItemToContainer(item);
-    containerOp.appendChild(item);
+//loads a particular theme
+function loadTheme(themeVal){
+  containerOp.innerHTML = themeVal;
+  for(let item of containerOp.children) {
+    addToContainer(item);
   }
 }
 
-function addItemToContainer(item){
+function addToContainer(item){
+  
   if(item.children.length == 0){
+    const page = document.getElementById('output-container');
     item.contentEditable = true;
-    item.classList.add('border');
-    item.classList.add('resizable');
-    item.draggable = true;
-
-    // item.addEventListener('click', selectedElementHandler);
     item.addEventListener('contextmenu', editElement);
+    item.addEventListener('click',selectedElementHandler);
   }
+
   else{
     for(let itemChild of item.children){
-      addItemToContainer(itemChild);
+      addToContainer(itemChild);
     }
   }
+  
 }
+
+export { chooseTheme };

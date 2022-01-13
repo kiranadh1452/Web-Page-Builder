@@ -30,4 +30,5 @@ const themeList = {
   'theme2' : ''
 }
 
-// chooseTheme(themeList.theme1);
+//by default theme1 is selected
+chooseTheme(themeList.theme1);

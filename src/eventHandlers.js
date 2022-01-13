@@ -1,6 +1,5 @@
-// import { DragIcon } from './DragIcon.js';
 import { Table } from './Table.js';
-import { Carousel } from './Carousel.js';
+import { Carousel } from '../assets/output/Carousel.js';
 import { editElement} from './editElement.js';
 import { totalElements, elemList } from './elementList.js';
 import { removeArrayElement, updateSelectedElement} from './utils.js' ;
@@ -20,20 +19,19 @@ function addElementToPage(event){
   if(targetValue == 'Image Carousel'){
     newElem = addCarouselToPage();
     handleElement(newElem, '' , event);
+
     return;
   }
 
   else if(targetValue == 'table'){
-    let table = new Table();
-    let myTable = table.table;
+    const table = new Table();
+    const myTable = table.table;
     handleElement(myTable, '', event);
     tableArray.push(table);
   }
   
   else{
-    console.log(targetValue)
     newElem = document.createElement(`${targetValue}`);
-    console.log(newElem);
     handleElement(newElem, targetValue, event);
   }
 
@@ -69,7 +67,6 @@ function handleElement(newElem, targetValue, event){
 }
 
 //adding image carousel element
-//not completed yet
 //returns the wrapper containing carousel
 function addCarouselToPage(){
   const carouselWrapper = document.createElement('div');

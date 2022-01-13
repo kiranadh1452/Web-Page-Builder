@@ -4,19 +4,19 @@ export {Carousel};
 class Carousel{
 
   constructor(properties){
-    this.wrapper = document.getElementById(properties.imgWrapperId);
-    this.images = document.getElementById(properties.imgContainer);
+    this.delay = properties.delay * 1000;
     this.imageWidth = properties.imageWidth;
     this.requiredTime = properties.requiredTime;
-    this.delay = properties.delay * 1000;
+    this.wrapper = document.getElementById(properties.imgWrapperId);
+    this.images = document.getElementById(properties.imgContainer);
 
-    this.currentIndex = 0;
     this.dx = 0;
+    this.currentIndex = 0;
     this.animateSpeed = (this.imageWidth / this.requiredTime) / 10;
 
+    this.i = 0;
     this.startAnimation1;
     this.startAnimation2;
-    this.i = 0;
 
 
     this.imageCount = this.images.children.length;
@@ -107,7 +107,6 @@ class Carousel{
     }
 
     this.images.style.left = `-${(this.imageWidth*(this.currentIndex-1))+this.dx}px`;
-
   }
 }
 

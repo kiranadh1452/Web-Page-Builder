@@ -1,3 +1,4 @@
+// this feature is experimental and can be toogled in `utils.js`
 class DragIcon{
   
   constructor(item){
@@ -19,6 +20,7 @@ class DragIcon{
     this.dot.setAttribute('class','dragIcon');
   }
 
+  //method to delete the red drag icon
   delete(){
     this.dot.remove();
   }
