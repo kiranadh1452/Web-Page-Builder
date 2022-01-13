@@ -31,4 +31,4 @@ const themeList = {
 }
 
 //by default theme1 is selected
-chooseTheme(themeList.theme1);
+// chooseTheme(themeList.theme1);
